@@ -1,12 +1,17 @@
 package dev.vince.exercices.cardpicker;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 
@@ -59,6 +64,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        discard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(deckManager.GetDiscard().size() == 0){
+                    Toast.makeText(
+                            MainActivity.this,
+                            "Il n'y a rien dans la défausse!",
+                            Toast.LENGTH_SHORT
+                        ).show();
+                    return;
+                }
+
+                Intent intent = new Intent(MainActivity.this, ListCardActivity.class);
+                Bundle extras = new Bundle();
+                String cardJson = new Gson().toJson(deckManager.GetDiscard());
+                extras.putString("json_cards", cardJson);
+                intent.putExtras(extras);
+                startActivity(intent);
+            }
+        });
+
         deckManager = new DeckManager();
         DrawDrawnCard(null);
     }
@@ -92,8 +119,8 @@ public class MainActivity extends AppCompatActivity {
         int color = helper.GetCardColor(symbole);
         card_value_top.setTextColor(color);
         card_value_bottom.setTextColor(color);
-        card_image_top.setColorFilter(color);
-        card_image_bottom.setColorFilter(color);
+        card_image_top.setColorFilter(color, PorterDuff.Mode.ADD);
+        card_image_bottom.setColorFilter(color, PorterDuff.Mode.ADD);
     }
 
 

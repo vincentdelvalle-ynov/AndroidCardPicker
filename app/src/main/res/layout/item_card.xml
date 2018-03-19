@@ -3,25 +3,36 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/colorPrimaryDark">
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:gravity="center"
-        android:textColor="@android:color/holo_red_light"
-        android:textStyle="bold"
-        android:textSize="21sp"
-        android:text="1"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_card"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp">
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:textColor="@android:color/holo_red_light"
+            android:textStyle="bold"
+            android:textSize="21sp"
+            android:text="1"/>
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:tint="#FF0000"
-        android:tintMode="add"
-        android:src="@mipmap/ic_heart" />
-
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:tint="#FF0000"
+            android:tintMode="add"
+            android:src="@mipmap/ic_heart" />
+    </LinearLayout>
 
 </LinearLayout>

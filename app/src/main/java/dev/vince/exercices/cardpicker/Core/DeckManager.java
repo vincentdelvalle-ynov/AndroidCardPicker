@@ -4,10 +4,6 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Random;
 
-/**
- * Created by vince on 01/03/2018.
- */
-
 public class DeckManager {
 
     private LinkedList<Card> deck;
@@ -68,6 +64,10 @@ public class DeckManager {
 
     public String GetDiscardCount(){
         return String.valueOf(discard.size());
+    }
+
+    public LinkedList<Card> GetDiscard(){
+        return discard;
     }
 
 }
